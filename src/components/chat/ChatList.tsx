@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useChatStore } from '../../store/useChatStore';
 import { formatPhoneForDisplay } from '../../utils/phoneFormat';
+import { NewChatModal } from '../modals/NewChatModal';
 
 /**
  * Форматирует время последнего сообщения для превью в списке чатов.
@@ -124,10 +125,11 @@ export const ChatList = () => {
         )}
       </div>
 
-      {/* TODO: NewChatModal будет добавлен на шаге 6 */}
-      {isNewChatOpen && (
-        <div className="hidden" aria-hidden="true" data-modal-placeholder />
-      )}
+      {/* Модальное окно нового чата */}
+      <NewChatModal
+        isOpen={isNewChatOpen}
+        onClose={() => setIsNewChatOpen(false)}
+      />
     </div>
   );
 };
