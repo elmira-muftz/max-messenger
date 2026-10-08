@@ -41,6 +41,8 @@ export const AuthScreen = () => {
       // Сохраняем креды и запускаем поллинг
       setAuth(idInstance.trim(), apiTokenInstance.trim());
       startPolling();
+      // Компонент будет размонтирован после setAuth (App переключится на ChatLayout)
+      setLoading(false);
     } catch (err) {
       const message =
         err instanceof Error ? err.message : 'Неизвестная ошибка';
